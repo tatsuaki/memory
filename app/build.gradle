@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "24.0.0 rc2"
+    defaultConfig {
+        applicationId "memory.com.test.kin.my.testes.tes.memoryapp"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 3
+        versionName '0.9.1'
+    }
+    signingConfigs {
+        keys {
+            try {
+                File keystorePropertiesFile = file('../keystore/release.properties')
+                storeFile file('../keystore/memory_key.jks')
+                Properties properties = new Properties()
+                keystorePropertiesFile.withInputStream {
+                    properties.load(it)
+                }
+                keyAlias properties.getProperty('KEY_ALIAS')
+                keyPassword properties.getProperty('KEYSTORE_PASSWORD')
+                storePassword properties.getProperty('KEYSTORE_PASSWORD')
+            } catch (e) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in release.properties.")
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.keys
+        }
+        debug {
+            applicationIdSuffix 'debug'
+        }
+    }
+    applicationVariants.all { variant ->
+        if (variant.buildType.name.equals("release")) {
+            variant.outputs.each { output ->
+                if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
+                    def file = output.outputFile
+                    def appName = "munefbuild"
+                //  def newName = "${appName}${defaultConfig.versionCode}_v${defaultConfig.versionName}.apk"
+                    def newName = "${appName}${defaultConfig.versionCode}.apk"
+                    output.outputFile = new File(file.parent, newName)
+                }
+            }
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+}
+
+task exportAar(type: Copy, dependsOn: assembleRelease)  {
+    from('build/outputs/aar/')
+    into('/../../Assets/Plugins/Android/')
+    include('lib-release.aar')
+    rename('lib-release.aar', 'android-lib.aar')
+}
