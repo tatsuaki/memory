@@ -32,17 +32,24 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.keys
+            debuggable true
+            zipAlignEnabled true
         }
         debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix 'debug'
+            debuggable true
+            zipAlignEnabled true
         }
     }
     applicationVariants.all { variant ->
         if (variant.buildType.name.equals("release")) {
             variant.outputs.each { output ->
+                System.println("* output.outputFile.name : ${output.outputFile.name}")
                 if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
                     def file = output.outputFile
-                    def appName = "munefbuild"
+                    def appName = "munef"
                 //  def newName = "${appName}${defaultConfig.versionCode}_v${defaultConfig.versionName}.apk"
                     def newName = "${appName}${defaultConfig.versionCode}.apk"
                     output.outputFile = new File(file.parent, newName)
@@ -55,9 +62,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile project(':mylib')
 }
 
 task exportAar(type: Copy, dependsOn: assembleRelease)  {
