@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/debug_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/debug_drawable"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple"
+        android:text="----------Display---------" />
+    <TextView
+        android:id="@+id/debug_widthPixels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/pink"
+        android:text="widthPixels" />
+    <TextView
+        android:id="@+id/debug_heightPixels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="heightPixels" />
+    <TextView
+        android:id="@+id/debug_density"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/pink"
+        android:text="density" />
+    <TextView
+        android:id="@+id/debug_scaledDensity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="scaledDensity" />
+    <TextView
+        android:id="@+id/debug_refreshRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="refreshRate" />
+    <TextView
+        android:id="@+id/debug_memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple"
+        android:text="----------Memory----------" />
+    <TextView
+        android:id="@+id/debug_free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/pink"
+        android:text="free" />
+    <TextView
+        android:id="@+id/debug_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="use" />
+    <TextView
+        android:id="@+id/debug_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple"
+        android:text="max" />
+    <TextView
+        android:id="@+id/debug_checked"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:layout_gravity="center"
+        android:text="Checked" />
+</LinearLayout>

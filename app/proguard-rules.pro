@@ -15,3 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keepattributes Signature
+
+# -keepnames public class android.support.v7.*
+-dontwarn android.support.v7.*
+#-keepnames public class memory.com.test.kin.my.testes.tes.memoryapp

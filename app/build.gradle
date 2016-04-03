@@ -7,8 +7,8 @@ android {
         applicationId "memory.com.test.kin.my.testes.tes.memoryapp"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 3
-        versionName '0.9.1'
+        versionCode 5
+        versionName '0.9.2'
     }
     signingConfigs {
         keys {
@@ -22,7 +22,7 @@ android {
                 keyAlias properties.getProperty('KEY_ALIAS')
                 keyPassword properties.getProperty('KEYSTORE_PASSWORD')
                 storePassword properties.getProperty('KEYSTORE_PASSWORD')
-            } catch (e) {
+            } catch (ignored) {
                 throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in release.properties.")
             }
         }
@@ -38,7 +38,7 @@ android {
         debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            applicationIdSuffix 'debug'
+            applicationIdSuffix '.debug'
             debuggable true
             zipAlignEnabled true
         }
@@ -53,6 +53,16 @@ android {
                 //  def newName = "${appName}${defaultConfig.versionCode}_v${defaultConfig.versionName}.apk"
                     def newName = "${appName}${defaultConfig.versionCode}.apk"
                     output.outputFile = new File(file.parent, newName)
+
+                    def publish = project.tasks.create("publish_${appName}")
+                    // Move and Rename APK
+                    def task = project.tasks.create("publish${variant.name.capitalize()}Apk", Copy)
+                    task.from(output.outputFile)
+                //  task.rename(output.outputFile.name, newName)
+                    task.into(deployTo)
+
+                    task.dependsOn variant.assemble
+                    publish.dependsOn task
                 }
             }
         }
@@ -63,6 +73,15 @@ android {
 
 dependencies {
     compile project(':mylib')
+}
+
+task exportApk(type: Copy, dependsOn: assembleRelease)  {
+    from('build/outputs/apk/')
+    into('/../apks/')
+//  def appName = "munef"
+    include('${appName}${defaultConfig.versionCode}.apk')
+//  include('munef3.apk')
+//  rename('${appName}${defaultConfig.versionCode}.apk', 'android-lib.aar')
 }
 
 task exportAar(type: Copy, dependsOn: assembleRelease)  {
