@@ -27,28 +27,11 @@
         android:layout_alignEnd="@+id/imageView"
         android:background="@drawable/btn_start" />
 
-    <!--
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="checks"
-        android:id="@+id/top_check"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="66dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginBottom="61dp" />
--->
-    <fragment
-        android:id="@+id/debugFragment"
-        class="memory.com.test.kin.my.testes.tes.memoryapp.DebugFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        tools:layout="@layout/debug_fragment" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/container"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -56,5 +39,6 @@
         android:text="debug_main"
         android:id="@+id/debug_main"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
 </RelativeLayout>

@@ -1,5 +1,7 @@
-package memory.com.test.kin.my.testes.tes.memoryapp;
+package memory.com.test.kin.my.testes.tes.memoryapp.Debug;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,7 @@ public class LayoutUtil {
      * @param view views
      */
     public static void cleanupView(View view) {
-        Log.v(TAG, "cleanupView start");
+    //  Log.v(TAG, "cleanupView start");
         if (view instanceof ImageButton) {
             Log.v(TAG, "clean ImageButton");
             ImageButton ib = (ImageButton) view;
@@ -50,5 +52,20 @@ public class LayoutUtil {
         } else {
             Log.v(TAG, "cleanupView finish");
         }
+    }
+
+    /**
+     * バックスタックを全て削除
+     */
+    public static void deleteBackStackFragment(Activity activity) {
+        FragmentManager manager = activity.getFragmentManager();
+        manager.popBackStack();
+
+        if (manager.getBackStackEntryCount() > 0) {
+            manager.popBackStack(manager.getBackStackEntryAt(0).getName(),
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+        //トランザクションを直ちに実行
+        manager.executePendingTransactions();
     }
 }

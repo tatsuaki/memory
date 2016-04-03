@@ -1,76 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/debug_content"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/debug_drawable"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="----------Build----------"
         android:textColor="@color/purple"
-        android:text="----------Display---------" />
+        tools:ignore="HardcodedText" />
+
     <TextView
-        android:id="@+id/debug_widthPixels"
+        android:id="@+id/debug_manufacture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="manufacture"
         android:textColor="@color/pink"
-        android:text="widthPixels" />
+        tools:ignore="HardcodedText" />
+
     <TextView
-        android:id="@+id/debug_heightPixels"
+        android:id="@+id/debug_release"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="debug_release"
         android:textColor="@color/red"
-        android:text="heightPixels" />
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="------Display[px]-----"
+        android:textColor="@color/purple"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/debug_pixels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pixels"
+        android:textColor="@color/pink"
+        tools:ignore="HardcodedText" />
+
     <TextView
         android:id="@+id/debug_density"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/pink"
-        android:text="density" />
-    <TextView
-        android:id="@+id/debug_scaledDensity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="density"
         android:textColor="@color/red"
-        android:text="scaledDensity" />
-    <TextView
-        android:id="@+id/debug_refreshRate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:text="refreshRate" />
+        tools:ignore="HardcodedText" />
+
     <TextView
         android:id="@+id/debug_memory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="----Memory[MB]----"
         android:textColor="@color/purple"
-        android:text="----------Memory----------" />
-    <TextView
-        android:id="@+id/debug_free"
-        android:layout_width="wrap_content"
+        tools:ignore="HardcodedText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/pink"
-        android:text="free" />
-    <TextView
-        android:id="@+id/debug_use"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="linux"
+            android:textColor="@color/pink"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/debug_linux"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/pink"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:text="use" />
-    <TextView
-        android:id="@+id/debug_max"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="native"
+            android:textColor="@color/red"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/debug_native"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/red"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/purple"
-        android:text="max" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="free"
+            android:textColor="@color/pink"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/debug_free"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/pink"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="java"
+            android:textColor="@color/red"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/debug_use"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/red"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="max"
+            android:textColor="@color/pink"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/debug_max"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/pink"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="total"
+            android:textColor="@color/red"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/debug_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/red"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/debug_checked"
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
         android:layout_gravity="center"
-        android:text="Checked" />
+        android:layout_marginTop="10dp"
+        android:text="Checked"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 </LinearLayout>

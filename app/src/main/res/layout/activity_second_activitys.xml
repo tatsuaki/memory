@@ -10,18 +10,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="memory.com.test.kin.my.testes.tes.memoryapp.MainActivitys">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="return" />
-
-    <fragment android:name="memory.com.test.kin.my.testes.tes.memoryapp.DebugFragment"
-        android:id="@+id/debugFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/container_second"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        tools:layout="@layout/debug_fragment" />
+        android:layout_alignParentEnd="true" >
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to Top"
+        android:layout_alignParentRight="true"
+        android:id="@+id/to_top"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="shows"
+        android:id="@+id/scond_"
+        android:layout_alignParentBottom="true"
+        tools:ignore="HardcodedText" />
 </RelativeLayout>

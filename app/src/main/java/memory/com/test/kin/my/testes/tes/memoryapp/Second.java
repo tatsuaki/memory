@@ -1,46 +1,38 @@
 package memory.com.test.kin.my.testes.tes.memoryapp;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-/**
- * Created by maki on 2016/04/02.
- * MemoryApp.
- */
+import memory.com.test.kin.my.testes.tes.memoryapp.Debug.DebugFragment;
+import memory.com.test.kin.my.testes.tes.memoryapp.Debug.LayoutUtil;
+
 public class Second extends Activity {
-    private Button button;
-    private DebugFragment fragment;
+    private static final String TAG = "Second";
+    private DebugFragment debugFragment;
+    private boolean showDebugFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayout();
-
-//        // FragmentTransactionを作成
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragment = new DebugFragment();
-//        // add()の第一引数は、Fragmentを挿入する部分のレイアウトファイルのid、第二引数は挿入するFragmen
-//        fragmentTransaction.add(R.id.debugFragment, fragment);
-//        fragmentTransaction.commit();
     }
 
     private void setLayout() {
-        // ステータスバー非表示
+        Log.v(TAG, "setLayout");
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // タイトルバー非表示
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_second_activitys);
 
-        button = (Button) findViewById(R.id.button2);
+        Button button = (Button) findViewById(R.id.to_top);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +41,41 @@ public class Second extends Activity {
                 finish();
             }
         });
+        Button scond_ = (Button) findViewById(R.id.scond_);
+        scond_.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chekss();
+                Log.v(TAG, "onClick = " + showDebugFragment);
+                if (showDebugFragment) {
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.hide(debugFragment);
+                    fragmentTransaction.commitAllowingStateLoss();
+                    showDebugFragment = false;
+                } else {
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    if (null == debugFragment) {
+                        Log.v(TAG, "new debugFragment");
+                        debugFragment = new DebugFragment();
+                        fragmentTransaction.add(R.id.container_second, debugFragment, "debugFragment");
+                        fragmentTransaction.addToBackStack(null);
+                    } else {
+                        fragmentTransaction.show(debugFragment);
+                    }
+                    fragmentTransaction.commitAllowingStateLoss();
+                    showDebugFragment = true;
+                }
+            }
+        });
+    }
+
+    public void chekss() {
+        Log.d("build","MANUFACTURER:" + Build.MANUFACTURER);
+        Log.d("build","MODEL:" + Build.MODEL);
+        Log.d("build","VERSION.RELEASE:" + Build.VERSION.RELEASE);
+        Log.d("build","VERSION.SDK_INT:" + Build.VERSION.SDK_INT);
     }
 
     @Override
