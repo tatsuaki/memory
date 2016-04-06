@@ -193,7 +193,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Checked"
+        android:text="Analyze"
         android:textColor="@color/purple"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />

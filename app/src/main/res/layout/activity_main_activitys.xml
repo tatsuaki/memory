@@ -11,34 +11,55 @@
     tools:context="memory.com.test.kin.my.testes.tes.memoryapp.MainActivitys">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:background="@drawable/img_top"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/img_top" />
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
         android:layout_alignBottom="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
         android:layout_alignEnd="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
         android:background="@drawable/btn_start" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/container"/>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+    </FrameLayout>
 
     <Button
+        android:id="@+id/debug_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="debug_main"
-        android:id="@+id/debug_main"
-        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@+id/button"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="debug_main"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/debug_main2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/debug_main"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="google_account"
         tools:ignore="HardcodedText" />
 </RelativeLayout>

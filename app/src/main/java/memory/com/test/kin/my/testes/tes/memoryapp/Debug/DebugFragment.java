@@ -91,6 +91,10 @@ public class DebugFragment extends Fragment {
         float linuxHeap = (float)(info.availMem / 1024) / 1000;
         float nativeHeap = (float)(Debug.getNativeHeapAllocatedSize() / 1024 ) / 1000;
 
+        String memory = "Free=" + Long.toString(Debug.getNativeHeapFreeSize() / 1024) + "kb" + // 空きヒープサイズ
+                ", Allocated=  " + Long.toString(Debug.getNativeHeapAllocatedSize() / 1024) + "kb" + // 使用中ピープサイズ
+                ", Size=" + Long.toString(Debug.getNativeHeapSize() / 1024) + "kb"; // 確保しているヒープサイズ
+        Log.i(TAG, memory);
         Runtime runtime = Runtime.getRuntime();
         float total =(float)(runtime.totalMemory() / 1024) / 1000;
         float frees = (float)(runtime.freeMemory() / 1024) / 1000;

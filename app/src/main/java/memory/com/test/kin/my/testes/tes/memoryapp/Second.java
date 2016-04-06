@@ -38,6 +38,7 @@ public class Second extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivitys.class);
                 startActivity(intent);
+                LayoutUtil.cleanupView(findViewById(R.id.debug_content));
                 finish();
             }
         });
@@ -71,7 +72,7 @@ public class Second extends Activity {
         });
     }
 
-    public void chekss() {
+    private void chekss() {
         Log.d("build","MANUFACTURER:" + Build.MANUFACTURER);
         Log.d("build","MODEL:" + Build.MODEL);
         Log.d("build","VERSION.RELEASE:" + Build.VERSION.RELEASE);
