@@ -25,6 +25,7 @@ import org.json.JSONObject;
  * Created by maki on 2016/04/06.
  * MemoryApp.
  */
+@SuppressWarnings("ALL")
 public class GooleAuthActivity extends Activity {
     private AccountManager accountManager;
     private String accountName;
@@ -72,8 +73,8 @@ public class GooleAuthActivity extends Activity {
     private void getAuthToken() {
         Account account = null;
         Account[] accounts = accountManager.getAccounts();
-        for (int i = 0; i < accounts.length; i++) {
-            account = accounts[i];
+        for (Account account1 : accounts) {
+            account = account1;
             if (account.name.equals(accountName)) {
                 break;
             }
@@ -148,7 +149,7 @@ public class GooleAuthActivity extends Activity {
     }
 
 
-    public void onClickBtnUserInfo(View view) {
+    public void onClickBtnUserInfo(@SuppressWarnings("UnusedParameters") View view) {
         Log.v("onClickBtnUserInfo", "ユーザー情報取得ボタンクリック");
         startRequest(AUTH_TOKEN_TYPE_PROFILE);
     }
@@ -183,14 +184,14 @@ public class GooleAuthActivity extends Activity {
         dialog.show();
     }
 
-    public void onClickBtnAdSense(View view) {
+    public void onClickBtnAdSense(@SuppressWarnings("UnusedParameters") View view) {
         Log.v("onClickBtnAdSense", "AdSenseレポート取得ボタンクリック");
     //  startRequest(AUTH_TOKEN_TYPE_ADSENSE);
     }
 
     public class AsyncTaskGetJson extends AsyncTask<String, Void, JSONObject> {
-        protected DefaultHttpClient client;
-        protected OnResultEventListener listener;
+        DefaultHttpClient client;
+        OnResultEventListener listener;
 
         @Override
         protected void onPreExecute() {
@@ -217,7 +218,6 @@ public class GooleAuthActivity extends Activity {
             }
             return json;
         }
-
 
         @Override
         protected void onPostExecute(JSONObject json) {
@@ -246,6 +246,6 @@ public class GooleAuthActivity extends Activity {
     } // END class TaskGetJson
 
     public interface OnResultEventListener {
-        public void onResult(JSONObject json);
+        void onResult(JSONObject json);
     } // END interface EventListener
 }

@@ -57,6 +57,7 @@ public class LayoutUtil {
     /**
      * バックスタックを全て削除
      */
+    @SuppressWarnings("unused")
     public static void deleteBackStackFragment(Activity activity) {
         FragmentManager manager = activity.getFragmentManager();
         manager.popBackStack();

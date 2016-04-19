@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/img_top" />
+        android:background="@drawable/img_top"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:id="@+id/button"
@@ -36,11 +37,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
     </FrameLayout>
 
     <Button
@@ -62,4 +58,20 @@
         android:layout_gravity="center_horizontal"
         android:text="google_account"
         tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="error"
+        android:id="@+id/errorButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sync"
+        android:id="@+id/syncButton"
+        android:layout_above="@+id/errorButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

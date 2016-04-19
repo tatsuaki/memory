@@ -70,6 +70,25 @@ public class Second extends Activity {
                 }
             }
         });
+
+        Button errorButton2 = (Button) findViewById(R.id.error2);
+        if (null != errorButton2) {
+            errorButton2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    v.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            errors();
+                        }
+                    });
+                }
+            });
+        }
+    }
+    private void errors() {
+        String[] ss = new String[2];
+        ss[5].toString();
     }
 
     private void chekss() {

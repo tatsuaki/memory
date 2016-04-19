@@ -2,14 +2,15 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.0 rc2"
+//  buildToolsVersion "24.0.0 rc2"
+    buildToolsVersion "23.0.3"
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "memory.com.test.kin.my.testes.tes.memoryapp"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 5
-        versionName '0.9.2'
+        versionCode 7
+        versionName '0.9.4'
     }
     signingConfigs {
         keys {
@@ -32,8 +33,9 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //noinspection GroovyAssignabilityCheck
             signingConfig signingConfigs.keys
-            debuggable true
+            debuggable false
             zipAlignEnabled true
         }
         debug {
@@ -50,18 +52,21 @@ android {
                 System.println("* output.outputFile.name : ${output.outputFile.name}")
                 if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
                     def file = output.outputFile
-                    def appName = "munef"
+                    def appName = "mmeory"
                 //  def newName = "${appName}${defaultConfig.versionCode}_v${defaultConfig.versionName}.apk"
                     def newName = "${appName}${defaultConfig.versionCode}.apk"
+                    //noinspection GroovyAssignabilityCheck
                     output.outputFile = new File(file.parent, newName)
 
                     def publish = project.tasks.create("publish_${appName}")
                     // Move and Rename APK
                     def task = project.tasks.create("publish${variant.name.capitalize()}Apk", Copy)
+                    //noinspection GroovyAssignabilityCheck
                     task.from(output.outputFile)
                 //  task.rename(output.outputFile.name, newName)
                     task.into(deployTo)
 
+                    //noinspection GroovyAssignabilityCheck
                     task.dependsOn variant.assemble
                     publish.dependsOn task
                 }
@@ -74,6 +79,7 @@ android {
 
 dependencies {
     compile project(':mylib')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }
 
 task exportApk(type: Copy, dependsOn: assembleRelease)  {
